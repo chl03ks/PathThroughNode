@@ -1,16 +1,11 @@
-var greet = require('./greet');
+function Person(firtsName, lastName){
+        this.firtsName = firtsName;
+        this.lastName  = lastName;
+}
 
-greet();
-
-
-// Objects Literals
-
-var person = {
-    firtsName: 'Dan',
-    lastName: 'Garcia',
-    greeting: function(){
-        console.log("Hi " + this.firtsName + " " + this.lastName + "!");
-    }
+Person.prototype.greet = function (){
+        console.log("Helo, " + this.firtsName + " " + this.lastName );
 };
 
-person.greeting();
+var dan = new Person('Dan', 'Garcia');
+dan.greet()
