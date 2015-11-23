@@ -1,8 +1,4 @@
-//  Inmmediately invoked function Expressions (IIFE's)
-(function() {
-    var firstname = 'John';
-    console.log(firstname);
-}());
+var greet = require('./greet');
 
-var firstname = 'Dan';
-console.log(firstname);
+greet.english();
+greet.spanish();
