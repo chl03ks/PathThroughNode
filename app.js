@@ -1,11 +1,8 @@
-function Person(firtsName, lastName){
-        this.firtsName = firtsName;
-        this.lastName  = lastName;
-}
+//  Inmmediately invoked function Expressions (IIFE's)
+(function() {
+    var firstname = 'John';
+    console.log(firstname);
+}());
 
-Person.prototype.greet = function (){
-        console.log("Helo, " + this.firtsName + " " + this.lastName );
-};
-
-var dan = new Person('Dan', 'Garcia');
-dan.greet()
+var firstname = 'Dan';
+console.log(firstname);
