@@ -1,7 +1,6 @@
-var greet = require('./greet');
+var greet = require('./greet.js');
+var greet2 = require('./greet2.js');
 
-greet.english();
-greet.spanish();
+greet2.greet();
 
-var greetPatter = require('./ModulePattern.js');
-greetPatter.greet()
+// Personal recommendation is Just use module.exports
