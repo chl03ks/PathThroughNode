@@ -1,6 +1,6 @@
-var greet = require('./greet.js');
-var greet2 = require('./greet2.js');
+var util = require('util');
 
-greet2.greet();
+var name = "Tony";
+var greet = util.format("Hello, %s", name);
 
-// Personal recommendation is Just use module.exports
+util.log(greet);
