@@ -1,14 +1,15 @@
-var events = require('events');
-var eventConfig = require('./config').events;
+var person = {
+    firstName : 'Dan',
+    lastName: 'Garcia',
+    greet: function () {
+        console.log("Hi " + this.firstName);
+    },
+};
 
-var emtr = new events();
+var dan = Object.create(person);
+dan.firstName = "Rick";
+var rick = Object.create(person);
+rick.firstName = "Riff";
 
-emtr.on(eventConfig.GREET,function(){
-    console.log("Somewhere, some one said hello");
-});
-
-emtr.on(eventConfig.FILESAVE,function(){
-    console.log("Somewhere, another a hellos");
-});
-
-emtr.emit('greet');
+dan.greet();
+rick.greet();
