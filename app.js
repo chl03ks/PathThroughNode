@@ -1,4 +1,6 @@
-var a, b = 2;
-var c = a + b;
+var util = require('util');
 
-console.log(c);
+var name = "Tony";
+var greet = util.format("Hello, %s", name);
+
+util.log(greet);
