@@ -1,10 +1,14 @@
-var obj = {
-    name: "Daniel",
-    greet: function () {
-            console.log(`Hello ${this.name}`);
-    },
-};
+'use strict';
 
-obj.greet();
-obj.greet.call({name:'Ulises Daniel'});
-obj.greet.apply({name:'Ulises Daniel'});
+class Person {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    greet() {
+        console.log('Hello ' + this.firstName + " " + this.lastName);
+    }
+}
+var dan = new Person('Daniel', 'Garcia');
+dan.greet();
