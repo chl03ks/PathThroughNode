@@ -1,14 +1,9 @@
-'use strict';
+var Greeter = require('./greeter');
 
-class Person {
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+var  greeter = new  Greeter();
 
-    greet() {
-        console.log('Hello ' + this.firstName + " " + this.lastName);
-    }
-}
-var dan = new Person('Daniel', 'Garcia');
-dan.greet();
+greeter.on('greet', function (data) {
+    console.log('Some one Greeted! ' + data);
+});
+
+greeter.greet('Tony');
