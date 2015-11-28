@@ -1,6 +1,9 @@
-var util = require('util');
+var Greeter = require('./greeter');
 
-var name = "Tony";
-var greet = util.format("Hello, %s", name);
+var  greeter = new  Greeter();
 
-util.log(greet);
+greeter.on('greet', function (data) {
+    console.log('Some one Greeted! ' + data);
+});
+
+greeter.greet('Tony');
