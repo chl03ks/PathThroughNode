@@ -1,11 +1,5 @@
-var buf = new Buffer('Hello World', 'utf8');
-console.log(buf);
-console.log(buf.toString());
-console.log(buf.toJSON());
-console.log(buf[2]);
-
-buf.write('wo');
-console.log(buf);
-console.log(buf.toString());
-
-/* its good to know what buffers are */
+var buffer = new ArrayBuffer(8);
+var view = new Int32Array(buffer);
+view[0] = 5;
+view[1] = 10;
+console.log(view);
