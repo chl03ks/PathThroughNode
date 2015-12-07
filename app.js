@@ -1,9 +1,13 @@
-var Greeter = require('./greeter');
+var fs = require('fs');
+var zlib = require('zlib');
 
-var  greeter = new  Greeter();
+var readable = fs.createReadStream(__dirname + '/greet.txt' );
 
-greeter.on('greet', function (data) {
-    console.log('Some one Greeted! ' + data);
-});
+var writable = fs.createWriteStream(__dirname +'/greetcopy.txt');
 
-greeter.greet('Tony');
+var compress =  fs.createWriteStream(__dirname +'/greetcopy.txt.gz');
+
+var gzip = zlib.createGzip();
+
+readable.pipe(writable);
+readable.pipe(gzip).pipe(compress);
