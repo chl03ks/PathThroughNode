@@ -1,17 +1,11 @@
-function greet(callback) {
-    console.log('Hello!');
-    var data = {
-        name: "Daniel",
-    };
-    callback(data);
-}
+var fs = require('fs');
 
-greet(function(data){
-    console.log('CallBaclk was invoked');
+var greet = fs.readFileSync(__dirname + '/greet.txt', 'utf8');
+
+console.log(greet);
+
+var greet = fs.readFile(__dirname + '/greet.txt', 'utf8', function (err, data) {
     console.log(data);
 });
 
-greet(function(data){
-    console.log('a different function was invoked');
-    console.log(data.name);
-});
+console.log('Done!');
