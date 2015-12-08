@@ -1,13 +1,23 @@
+var http = require('http');
 var fs = require('fs');
-var zlib = require('zlib');
 
-var readable = fs.createReadStream(__dirname + '/greet.txt' );
+http.createServer(function (req, res) {
 
-var writable = fs.createWriteStream(__dirname +'/greetcopy.txt');
+    if (req.url === '/') {
+        fs.createReadStream(__dirname + '/index.html').pipe(res);
+    }else if(req.url === '/api'){
 
-var compress =  fs.createWriteStream(__dirname +'/greetcopy.txt.gz');
+        res.writeHead(200, {'Content-Type' : 'application.json' });
+        var obj = {
+            firstname:'Jonh',
+            lastname: 'Doe'
+        };
+        res.end(JSON.stringify(obj));
+    }else{
+        res.writeHead(404);
+        res.end();
+    }
 
-var gzip = zlib.createGzip();
 
-readable.pipe(writable);
-readable.pipe(gzip).pipe(compress);
+
+}).listen(1337, '127.0.0.1');
