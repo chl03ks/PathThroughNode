@@ -17,9 +17,7 @@
   },
   "homepage": "https://github.com/gvsdan/PathThroughNode#readme",
   "dependencies": {
-    "moment": "^2.10.6"
+    "express": "^4.13.3"
   },
-  "devDependencies": {
-    "jasmine-node": "^1.14.5"
-  }
+  "devDependencies": {}
 }
