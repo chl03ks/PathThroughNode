@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/gvsdan/PathThroughNode#readme",
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "jade": "^1.11.0"
   },
   "devDependencies": {}
 }
