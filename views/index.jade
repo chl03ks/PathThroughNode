@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    script(type="text/javascript", src="https://code.jquery.com/jquery-2.1.4.min.js")
+    title Document
+body
+    h1 Hello World!
+    form(action="/person", method="post")
+        span First Name:
+        input(type="text", name="firstname", value="")
+        br
+        span Last Name:
+        input(type="text", name="lastname", value="")
+        br
+        input(type="submit", name="name", value="Sumbmit")
+    script.
+        $.ajax({
+            type: 'POST',
+            url: '/personjson',
+            data: JSON.stringify({firstname: 'Jane', lastname: 'Doe'}),
+            dataType: 'json',
+            contentType: 'application/json'
+            
+        });
+        
+            
+        
+        
+    
+    
+    
+        

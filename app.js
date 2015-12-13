@@ -1,21 +1,40 @@
-var http = require('http');
-var fs = require('fs');
+'use strcit';
+var express = require('express');
+var bodyParser = require('body-parser');
 
-http.createServer(function (req, res) {
+var app = express();
+var port = process.env.PORT || 3000;
 
-    if (req.url === '/') {
-        fs.createReadStream(__dirname + '/index.html').pipe(res);
-    }else if(req.url === '/json'){
+var jsonParser = bodyParser.json();
+var urlencodedParser = bodyParser.urlencoded({extended: false});
 
-        res.writeHead(200, {'Content-Type' : 'application.json' });
-        var obj = {
-            firstname:'Jonh',
-            lastname: 'Doe'
-        };
-        res.end(JSON.stringify(obj));
-    }else{
-        res.writeHead(404);
-        res.end();
-    }
 
-}).listen(1337, '127.0.0.1');
+app.use('/assets', express.static(__dirname + '/public'));
+
+app.set('view engine', 'jade');
+
+app.get('/', function (req, res) {
+    res.render('index');
+});
+
+app.get('/api',function (req, res) {
+    res.json({ firstname: 'John', lastname: 'Dan'});
+});
+
+app.get('/person/:id',function (req, res) {
+    res.render('person', { ID: req.params.id});
+});
+
+app.post('/person', urlencodedParser , function (req, res) {
+    res.send('Thank You');
+    console.log(req.body.firstname);
+    console.log(req.body.lastname);
+});
+
+app.post('/personjson', jsonParser , function (req, res) {
+    res.send('JSON DATA!');
+    console.log(req.body.firstname);
+    console.log(req.body.lastname);
+});
+
+app.listen(port);
