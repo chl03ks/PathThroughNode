@@ -1,33 +1,17 @@
 <!DOCTYPE html>
-html(lang="en")
-head
-    meta(charset="UTF-8")
-    script(type="text/javascript", src="https://code.jquery.com/jquery-2.1.4.min.js")
-    title Document
-body
-    h1 Hello World!
-    form(action="/person", method="post")
-        span First Name:
-        input(type="text", name="firstname", value="")
-        br
-        span Last Name:
-        input(type="text", name="lastname", value="")
-        br
-        input(type="submit", name="name", value="Sumbmit")
-    script.
-        $.ajax({
-            type: 'POST',
-            url: '/personjson',
-            data: JSON.stringify({firstname: 'Jane', lastname: 'Doe'}),
-            dataType: 'json',
-            contentType: 'application/json'
-            
-        });
-        
-            
-        
-        
+html(lang="en" ng-app="TestApp")
+    head
+        meta(charset="UTF-8")
+        title The MEAN Stack
+        script(src="/bower/angular/angular.js", charset="utf-8")
+    body(ng-controller="MainController as Main ")
+        .list
+            ul
+                li(ng-repeat="person in Main.people")
+                    {{ person.name }}
+        script.
+            var clientPeople = !{JSON.stringify(serverPeople)};
+        script(src="/assets/js/app.js", charset="utf-8")
+
+
     
-    
-    
-        
