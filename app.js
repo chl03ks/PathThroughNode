@@ -1,6 +1,7 @@
 'use strcit';
 var express = require('express');
 var bodyParser = require('body-parser');
+var mysql = require('mysql');
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -14,6 +15,19 @@ app.use('/assets', express.static(__dirname + '/public'));
 app.set('view engine', 'jade');
 
 app.get('/', function (req, res) {
+
+    var con = mysql.createConnection({
+        host: "localhost",
+        user: 'root',
+        password: 'root',
+        database: 'test'
+    });
+
+    con.query('SELECT * FROM MyGuests', function(err, result){
+        if(err) throw err;
+            console.log(result);
+    });
+
     res.render('index');
 });
 
